@@ -16,7 +16,7 @@ foreach ($commandes as $commande) {
     $client = $commande["client"];
     $montant_ht = $commande["montant_ht"];
     $ttc = $montant_ht * (1 + TVA);
-    $statut = strtoupper($commande["statut"]);
+    $statut = $commande["statut"];
 
     echo "Commande de $client : $montant_ht € HT, " . number_format($ttc, 2, ',', ' ') . " € TTC – $statut<br>";
 
