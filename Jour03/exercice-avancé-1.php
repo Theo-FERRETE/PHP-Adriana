@@ -12,49 +12,55 @@
 define("VICTORY_POINTS", 3);
 define("DRAW_POINTS", 1);
 
-// Tableau des équipes
+// Tableau des équipes avec buts
 $teams = [
     "Monaco" => [
         "points" => 0,
         "matches_played" => 0,
         "victories" => 0,
         "draws" => 0,
-        "defeats" => 0
+        "defeats" => 0,
+        "goals_scored" => 0
     ],
     "Rennes" => [
         "points" => 0,
         "matches_played" => 0,
         "victories" => 0,
         "draws" => 0,
-        "defeats" => 0
+        "defeats" => 0,
+        "goals_scored" => 0
     ],
     "OM" => [
-        "points" => 0,  
+        "points" => 0,
         "matches_played" => 0,
         "victories" => 0,
         "draws" => 0,
-        "defeats" => 0
+        "defeats" => 0,
+        "goals_scored" => 0
     ],
     "Lille" => [
         "points" => 0,
         "matches_played" => 0,
         "victories" => 0,
         "draws" => 0,
-        "defeats" => 0
+        "defeats" => 0,
+        "goals_scored" => 0
     ],
     "Lyon" => [
         "points" => 0,
         "matches_played" => 0,
         "victories" => 0,
         "draws" => 0,
-        "defeats" => 0
+        "defeats" => 0,
+        "goals_scored" => 0
     ],
     "PSG" => [
         "points" => 0,
         "matches_played" => 0,
         "victories" => 0,
         "draws" => 0,
-        "defeats" => 0
+        "defeats" => 0,
+        "goals_scored" => 0
     ]
 ];
 
@@ -66,30 +72,29 @@ function playMatch($team1, $team2) {
 
 function updateStats(&$teams, $team1, $team2, $score1, $score2) {
     $teams[$team1]['matches_played']++;
+    $teams[$team2]['matches_played']++;
+
+    // Stats buts 
+    $teams[$team1]['goals_scored'] += $score1;
+    $teams[$team2]['goals_scored'] += $score2;
 
     if ($score1 > $score2) {
         $teams[$team1]['victories']++;
         $teams[$team1]['points'] += VICTORY_POINTS;
+        $teams[$team2]['defeats']++;
     } elseif ($score1 == $score2) {
         $teams[$team1]['draws']++;
-        $teams[$team1]['points'] += DRAW_POINTS;
-    } else {
-        $teams[$team1]['defeats']++;
-    }
-
-    $teams[$team2]['matches_played']++;
-    if ($score2 > $score1) {
-        $teams[$team2]['victories']++;
-        $teams[$team2]['points'] += VICTORY_POINTS;
-    } elseif ($score2 == $score1) {
         $teams[$team2]['draws']++;
+        $teams[$team1]['points'] += DRAW_POINTS;
         $teams[$team2]['points'] += DRAW_POINTS;
     } else {
-        $teams[$team2]['defeats']++;
+        $teams[$team2]['victories']++;
+        $teams[$team2]['points'] += VICTORY_POINTS;
+        $teams[$team1]['defeats']++;
     }
 }
 
-// === RÉSULTATS DES MATCHS ===
+//  RÉSULTATS DES MATCHS 
 echo "<h2 class='text-2xl font-bold mb-4'>📊 Résultats des matchs</h2>";
 echo "<table class='table-auto w-full mb-8 bg-white rounded shadow'>";
 echo "<thead><tr class='bg-gray-200'>
@@ -121,15 +126,18 @@ for ($i = 0; $i < count($teamNames); $i++) {
 }
 echo "</tbody></table>";
 
-// === TRI CLASSEMENT PAR POINTS, PUIS VICTOIRES
+// Tri du classement
 uasort($teams, function($a, $b) {
     if ($b["points"] === $a["points"]) {
+        if ($b["victories"] === $a["victories"]) {
+            return $b["goals_scored"] <=> $a["goals_scored"];
+        }
         return $b["victories"] <=> $a["victories"];
     }
     return $b["points"] <=> $a["points"];
 });
 
-// === CLASSEMENT FINAL ===
+//  CLASSEMENT FINAL
 echo "<h2 class='text-2xl font-bold mb-4'>🏁 Classement final</h2>";
 echo "<table class='table-auto w-full bg-white rounded shadow'>";
 echo "<thead><tr class='bg-gray-200'>
@@ -140,6 +148,7 @@ echo "<thead><tr class='bg-gray-200'>
     <th class='p-2'>Nuls</th>
     <th class='p-2'>Défaites</th>
     <th class='p-2'>Matchs joués</th>
+    <th class='p-2'>Buts marqués</th>
 </tr></thead><tbody>";
 
 $rank = 1;
@@ -152,6 +161,7 @@ foreach ($teams as $name => $stats) {
         <td class='p-2'>{$stats['draws']}</td>
         <td class='p-2'>{$stats['defeats']}</td>
         <td class='p-2'>{$stats['matches_played']}</td>
+        <td class='p-2'>{$stats['goals_scored']}</td>
     </tr>";
     $rank++;
 }
