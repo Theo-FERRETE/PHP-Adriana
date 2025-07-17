@@ -43,5 +43,5 @@ function afficherResultatEleve($prenomRecherche, $classe) {
     echo "Aucun élève trouvé avec le prénom : $prenomRecherche";
 }
 
-afficherResultatEleve("Lucie", $classe);
+afficherResultatEleve("Yann", $classe);
 
