@@ -1,5 +1,4 @@
 <?php
-
 $classe = [
     [
         "prenom" => "Lucie",
@@ -21,30 +20,28 @@ $classe = [
     ]
 ];
 
-// calculer la moyenne
+// Fonction pour calculer la moyenne
 function calculerMoyenne($eleve) {
-    // On enlève le prénom avant de faire la moyenne
     unset($eleve["prenom"]);
     $somme = 0;
-    $nbNotes = count($eleve);
-    
     foreach ($eleve as $note) {
         $somme += $note;
     }
-    
-    return $somme / $nbNotes;
+    return $somme / count($eleve);
 }
 
-// Fonction pour savoir si l’élève est admis
-function estAdmis($moyenne) {
-    return $moyenne >= 10;
+// Fonction pour afficher le résultat d’un élève donné
+function afficherResultatEleve($prenomRecherche, $classe) {
+    foreach ($classe as $eleve) {
+        if (strtolower($eleve["prenom"]) === strtolower($prenomRecherche)) {
+            $moyenne = calculerMoyenne($eleve);
+            $admission = $moyenne >= 10 ? "Admis ✅" : "Refusé ❌";
+            echo "{$eleve['prenom']} a une moyenne de " . round($moyenne, 2) . " : $admission<br>";
+            return;
+        }
+    }
+    echo "Aucun élève trouvé avec le prénom : $prenomRecherche";
 }
 
-foreach ($classe as $eleve) {
-    $prenom = $eleve["prenom"];
-    $moyenne = calculerMoyenne($eleve);
-    $admission = estAdmis($moyenne) ? "Admis ✅" : "Refusé ❌";
-    
-    echo "$prenom a une moyenne de " . round($moyenne, 2) . " : $admission<br>";
-}
-?>
+afficherResultatEleve("Lucie", $classe);
+
