@@ -97,7 +97,7 @@ function updateStats(&$teams, $team1, $team2, $score1, $score2) {
 //  RÉSULTATS DES MATCHS 
 echo "<h2 class='text-2xl font-bold mb-4'>📊 Résultats des matchs</h2>";
 echo "<table class='table-auto w-full mb-8 bg-white rounded shadow'>";
-echo "<thead><tr class='bg-gray-200'>
+echo "<thead><tr class='bg-yellow-400'>
         <th class='p-2'>Équipe 1</th>
         <th class='p-2'>Score</th>
         <th class='p-2'>Équipe 2</th>
@@ -140,7 +140,7 @@ uasort($teams, function($a, $b) {
 //  CLASSEMENT FINAL
 echo "<h2 class='text-2xl font-bold mb-4'>🏁 Classement final</h2>";
 echo "<table class='table-auto w-full bg-white rounded shadow'>";
-echo "<thead><tr class='bg-gray-200'>
+echo "<thead><tr class='bg-yellow-400'>
     <th class='p-2'>Rang</th>
     <th class='p-2'>Équipe</th>
     <th class='p-2'>Points</th>

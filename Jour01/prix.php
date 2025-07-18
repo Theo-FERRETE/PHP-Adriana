@@ -6,7 +6,7 @@ define("TVA", 0.2);
 $prixHT = 100;
 
 // Calcul du prix TTC
-$prixTTC = $prixHT * (+ TVA);
+$prixTTC = $prixHT * (1+ TVA);
 
 // Affichage du prix TTC
 echo "Le prix TTC est de " . $prixTTC . " €.";
