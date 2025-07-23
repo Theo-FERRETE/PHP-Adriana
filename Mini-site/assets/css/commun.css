@@ -1,0 +1,139 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(145deg, #111, #1a1a1a);
+  color: #eaeaea;
+  min-height: 100vh;
+}
+
+/* HEADER */
+header {
+  background-color: #1c1c1c;
+  color: #f1c40f;
+  text-align: center;
+  padding: 2em 0;
+  border-bottom: 3px solid #f1c40f;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+  font-size: 2.5em;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* NAVIGATION */
+nav {
+  background-color: #2b2b2b;
+  text-align: center;
+  padding: 1em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav a {
+  color: #f1c40f;
+  margin: 0 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: 0.3s ease;
+}
+
+nav a:hover {
+  color: white;
+  border-bottom: 2px solid #f1c40f;
+}
+
+/* MAIN */
+main {
+  max-width: 1000px;
+  margin: 3em auto;
+  padding: 2em;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #2e2e2e;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+/* TITRES */
+h2 {
+  color: #f1c40f;
+  font-size: 1.8em;
+  margin-bottom: 1em;
+  border-left: 5px solid #f1c40f;
+  padding-left: 0.7em;
+}
+
+/* PARAGRAPHES */
+p {
+  font-size: 1.15em;
+  line-height: 1.6;
+  margin-bottom: 1.2em;
+  color: #dcdcdc;
+}
+
+/* TABLEAUX */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2em;
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+th, td {
+  padding: 1em;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+th {
+  background-color: #f1c40f;
+  color: #111;
+  text-transform: uppercase;
+}
+
+tr:hover {
+  background-color: #2e2e2e;
+}
+
+/* IMAGE */
+.image-php {
+  text-align: center;
+  margin-top: 2em;
+}
+
+.image-php img {
+  max-width: 250px;
+  height: auto;
+  filter: grayscale(10%);
+  transition: transform 0.3s ease;
+}
+
+.image-php img:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  main {
+    padding: 1em;
+  }
+
+  nav a {
+    display: block;
+    margin: 0.5em 0;
+  }
+
+  .image-php img {
+    max-width: 90%;
+  }
+}
