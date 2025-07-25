@@ -1,8 +1,7 @@
 <?php
-$css = 'modules.css';
+$css = 'assets/css/modules.css';
 include('includes/header.php');
 ?>
-
 
   <main>
     <h2>Liste des Modules PHP</h2>
@@ -36,5 +35,3 @@ include('includes/header.php');
 
   <?php include('includes/footer.php'); ?>
 
-</body>
-</html>

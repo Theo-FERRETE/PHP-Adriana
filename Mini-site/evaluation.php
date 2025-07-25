@@ -1,5 +1,5 @@
 <?php
-$css = 'evaluation.css';
+$css = 'index.css';
 include('includes/header.php');
 ?>
 

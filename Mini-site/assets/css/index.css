@@ -2,7 +2,6 @@ main {
   max-width: 600px;
   margin: 3em auto;
   padding: 2em 2.5em;
-  background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -30,19 +29,12 @@ main {
 .colonne {
   flex: 1;
   min-width: 280px;
-  background-color: #ffffff;
+  background-color: #dfdfdf;
   padding: 1.5em;
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
 }
 
-.colonne h2 {
-  font-size: 1.6em;
-  color: #007BFF;
-  border-left: 4px solid #007BFF;
-  padding-left: 0.5em;
-  margin-bottom: 1em;
-}
 
 .colonne p {
   font-size: 1.1em;
